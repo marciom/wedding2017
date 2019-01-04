@@ -1,0 +1,691 @@
+@import "settings/settings";
+@import "foundation";
+@include foundation-everything;
+@import "hamburgers";
+
+$rose: #FECFCA;
+$blue: #8FE1CF;
+$aqua: #7DCFB6;
+$scarlet: #53131E;
+
+hr{
+	border-bottom: 1px solid #5C6E73;
+}
+
+section{
+	width: 100vw;
+	height: auto;
+	min-height: 100vh;
+	padding: 75px 0;
+
+	@include breakpoint(large){
+		padding: 75px 45px;
+	}
+
+	@include breakpoint(xlarge){
+		padding: 75px 0;
+	}
+}
+
+.blueHeading{
+	color: $blue;
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: -2px;
+	text-transform: uppercase;
+	margin-bottom: 0;
+}
+
+.sans{
+	font-family: 'Open Sans', sans-serif;
+}
+.playFair{
+	font-family: 'Playfair Display', serif;
+}
+
+.noBotSpace{
+	margin-bottom: 0;
+}
+
+.grey{
+	color: grey;
+}
+
+.mgBot{
+	margin-bottom: 15px;
+}
+
+
+//=================================
+//  HEADER
+//=================================
+
+// Defualt styling for the hamburger menu
+// this makes it white by default for the image treamtnet
+
+.buttonWrapper{
+	position: fixed;
+	z-index: 3;
+	text-align: center;
+	color: #fff;
+	font-weight: 500;
+
+	.rsvp{
+		color: #fff;
+	}
+}
+
+.buttonWrapper{
+	.hambuger-box, .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after{
+		background-color: #fff;
+	}
+}
+
+// Revert the colour back to black
+// seems overly convelatued
+// will look into making this cleaner
+.buttonWrapperBlack, .is-active {
+	color: #000;
+	font-weight: 300;
+	.rsvp{
+		color: #000;
+	}
+}
+
+.buttonWrapperBlack, .is-active{
+	.hambuger-box, .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after{
+		background-color: #000;
+	} 
+}
+
+
+
+.hamburger{
+	position: relative;
+	top: 15px;
+	left: 15px;
+	outline: none;
+}
+
+.buttonLabel:after{
+		content: "Menu";
+		font-size: 1.15em;
+		text-transform: uppercase;
+		position: relative;
+		bottom: 5px;
+		left: 10px;
+}
+
+.buttonLabelClose:after{
+	content: "Close";
+}
+
+.rsvp{
+	position: relative;
+	top: 10px;
+	left: 25px;
+	font-size: 1.25rem;
+	padding: 5px;
+	animation: pulse 1.5s infinite;
+
+}
+
+.menu{
+	width: 100vw;
+	height: 100vh;
+	background-color: $rose;
+
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 75px 0;
+
+	nav{
+		position: relative;
+		top: 0.6rem;
+		text-align: center;
+
+		ul{
+			list-style: none;
+			font-size: 3rem;
+			letter-spacing: -1px;
+
+			@include breakpoint(medium){
+				top: 1rem;
+				font-size: 5rem;
+			}
+			
+			@include breakpoint(xxlarge){
+
+				font-size: 6rem;
+			}
+		}
+
+		li a{
+			display: none;
+			color: #416165;
+			font-weight: 500;
+
+			&:hover{
+				border-bottom: 5px solid $aqua;
+			}
+		}
+	}
+}
+
+.menu-is-closed{
+	top: -100vh;
+}
+
+.menu-is-open{
+	top: 0;
+}
+
+
+//=================================
+//  Loader
+//=================================
+
+.loader{
+	width: 100vw;
+	height: 100vh;
+	background-color: $blue; 
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	text-align: center; 
+	font-size: 2rem;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+}
+
+.loadWrapper{
+
+		p{
+		margin-top: 50px;
+		color: #fff;
+		}
+}
+
+.cheers{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100px;
+	margin: 0 auto;
+
+	ul {
+	  list-style: none;
+	  margin: 0;
+	  padding: 0;
+	  width: 70px;
+	  height: 25px;
+	  position: relative;
+	  opacity: 0;
+	  animation: 2s fadeInUp infinite linear 2s;
+	}
+	li {
+	  width: 6px;
+	  height: 15px;
+	  background: white;
+	  position: absolute;
+	  box-shadow: 0 0 1px white;
+	  transform-origin: bottom;
+	}
+	li:nth-child(1) {
+	  left: 26px;
+	  bottom: 5px;
+	  transform: rotate(-35deg);
+	}
+	li:nth-child(2) {
+	  left: 34px;
+	  bottom: 8px;
+	}
+	li:nth-child(3) {
+	  left: 42px;
+	  bottom: 5px;
+	  transform: rotate(35deg);
+	}
+}
+
+	.wineglass {
+	  height: 36px;
+	  position: relative;
+	}
+
+	.wineglass:after {
+	  content: ''; 
+	  position: absolute;
+	  top: 47px;
+	  left: 5px;
+	  width: 20px;
+	  height: 5px;
+	  background: white;
+	  box-shadow: 0 0 1px white;
+	}
+
+	.top {
+	  background: white;
+	  width: 30px;
+	  height: 36px;
+	  border-radius: 0 0 36px 36px;
+	  box-shadow: 0 0 1px white;
+	}
+
+	.top:before {
+	  content: ''; 
+	  position: absolute;
+	  left: 4px;
+	  bottom: 4px;
+	  width: 22px;
+	  height: 22px;
+	  border-radius: 50%;
+	  background: linear-gradient(transparent 50%, #85274e 50%);
+	}
+
+	.left .top:before {
+	  animation: rotate2 2s linear infinite;
+	}
+
+	.right .top:before {
+	  animation: rotate1 2s linear infinite;
+	}
+
+	.top:after {
+	  content: ''; 
+	  position: absolute;
+	  top: 35px;
+	  left: 12px;
+	  width: 6px;
+	  height: 13px;
+	  background: white;
+	  box-shadow: 0 0 1px white;
+	}
+
+	.left {
+	  display: inline-block;
+	  margin-right: 10px;
+	  animation: rotate1 2s cubic-bezier(.39,1.52,.46,.92) infinite;
+	}
+
+	.right {
+	  display: inline-block;
+	  animation: rotate2 2s cubic-bezier(.39,1.52,.46,.92) infinite;
+	}
+
+//=================================
+//  HOMEPAGE
+//=================================
+
+.us{
+	width: 100vw;
+	height: 100vh;
+	background: url('img/home-bkg.jpg');
+	background-position: -300px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+
+	@include breakpoint(medium){
+		background-position: -275px;
+	}
+
+	@include breakpoint(large){
+		background-position: initial;
+	}
+}
+
+.title{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100vw;
+	position: relative;
+	top: 5vh;
+	justify-content: center;
+	align-items: center;
+
+	@include breakpoint(medium){
+		width: 50vw;
+	}
+
+	@include breakpoint(large){
+		justify-content: center;
+		flex-wrap: nowrap;
+	}
+
+	
+
+
+	p{	
+		position: relative;
+		top: 20vh;
+		font-size: 4rem;
+		line-height: 4rem;
+		font-weight: 700;
+		color: #FFFFFF;
+		letter-spacing: -4px;
+
+
+		@include breakpoint(medium){
+			font-size: 5rem;
+			top: 25vh;
+			left: 25vw;
+		}
+
+		@include breakpoint(large){
+			left: 2vw;
+			font-size: 5rem;
+		}
+
+		@include breakpoint(xlarge){
+			top: 30vh;
+			left: 0;
+			font-size: 6vw;
+		}
+		
+		&:first-child{
+			z-index: 1;
+
+			@include breakpoint(large){
+			 margin-right: 45px;
+			}
+		}
+
+	}
+}
+
+#ampersandContainer{
+	position: relative;
+	top: -230px;
+	left: -120px;
+	width: 55rem;
+	padding-top: 10px;
+	height: auto;
+
+	@include breakpoint(medium){
+		width: 55rem;
+		top: 0;
+		left: 0;
+	}
+
+	@include breakpoint(large){
+		width: 45rem;
+		top: -7vh;
+		left: 2vw;
+	}
+
+	@include breakpoint(xlarge){
+		width: 55vw;
+		top: -12vh;
+		left: 14%;
+		
+	}
+
+	@include breakpoint(xxlarge){
+		width: 65rem;
+		top: 0vh;
+		left: 8vw;
+	}
+}
+
+.ampersand{
+	fill-rule: evenodd; 
+	opacity: 0.44;
+	stroke-width: 2px;
+	stroke: none;
+	stroke-width:3px;
+	fill: #50E3C2;
+
+}
+
+.icon-scroll,
+.icon-scroll:before {
+  position: absolute;
+  left: 50%;
+
+}
+.icon-scroll {
+	width: 40px;
+	height: 70px;
+	margin-left: -20px;
+	top: 80%;
+	margin-top: -35px;
+	box-shadow: inset 0 0 0 1px #fff;
+	border-radius: 25px;
+}
+.icon-scroll:before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	background: #fff;
+	margin-left: -4px;
+	top: 8px;
+	border-radius: 4px;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-name: scroll;
+}
+
+//=================================
+//  INTRO
+//=================================
+
+#intro{
+	min-height: auto;
+	background-color: $rose;
+	padding: 45px 25px;
+	
+}
+
+.introCopy{
+	text-align: center;
+	font-size: 1.2rem;
+	color: $scarlet;
+
+	@include breakpoint(large){
+		font-size: 1.6rem;
+	}
+
+	@include breakpoint(xlarge){
+		font-size: 2.2rem;
+	}
+}
+
+
+
+    .google-map {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-map iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+//=================================
+//  PEOPLE
+//=================================
+
+.brideAndGroom{
+	height: 250px;
+	background: url('img/bride-and-groom.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+
+	@include breakpoint(medium){
+			max-height: 55vh;
+			height: 776px;
+			margin-bottom: 35px;
+	}
+
+	@include breakpoint(large){
+			max-height: 65vh;
+			height: 800px;
+			margin-bottom: 35px;
+	}
+
+		@include breakpoint(xlarge){
+			max-height: 100vh;
+			height: 800px;
+			margin-bottom: 35px;
+	}
+
+	@include breakpoint(xxlarge){
+			height: 776px;
+			margin-bottom: 35px;
+	}
+
+
+}
+
+#brideAndGroom{
+	position: relative;
+	top:0;
+
+	.bride, .groom{
+		fill:#FFFFFF;
+	    font-weight: 800;
+	    font-size:12.875rem;
+	    opacity: 0.85;
+	    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+	}
+
+	.bride{ 
+		transform: translate(82.066px, 550px);
+	}
+
+	.groom{
+		transform: translate(72.787px, 725px);
+	}
+}
+
+.ampersandUS{
+	mix-blend-mode: multiply;
+	fill:#6BC6B3;
+}
+
+.subHeading{
+	font-size: 1.4rem;
+	text-transform: uppercase;
+}
+
+.introUs{
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 15px;
+
+	.subHeading{
+		text-transform: uppercase;
+		font-size: 3rem;
+		color: $rose;
+		font-weight: 700;
+	}
+
+	p{
+		line-height: 1.4;
+		color: $scarlet;
+	}
+}
+
+//=================================
+//  FAQ
+//=================================
+
+#faq article{
+	margin-bottom: 15px;
+}
+
+#faq h2{
+	font-size: 1.3rem;
+	margin-bottom: 0;
+	font-weight: 500;
+}
+
+[data-accordion-group]{
+	margin-top: 15px;
+}
+
+[data-accordion] [data-content] {
+    overflow: hidden;
+    max-height: 0;
+}
+
+[data-control]{
+	height: auto;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #000;
+	cursor: pointer;
+}
+
+[data-content]{
+	padding-top: 10px;
+}
+
+
+//=================================
+//  ANIMATION
+//=================================
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(254, 207, 202, 100);
+  }
+  70% {
+      box-shadow: 0 0 0 15px rgba(254, 207, 202, 0);
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(254, 207, 202, 0);
+  }
+}
+
+
+@keyframes rotate1{
+  0% {transform: rotate(0deg);}
+  50% {transform:rotate(22deg);}
+}
+@keyframes rotate2{
+  0% {transform:rotate(0deg);}
+  50% {transform:rotate(-22deg);}
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+  
+  33% {
+    opacity: 1;
+    transform: scaleY(1.4);
+  }
+  64% {
+     opacity: .1;
+     transform: scaleY(1);
+  }
+  100% { 
+    opacity: 0;
+    transform: scaleY(.3);
+  }
+}
+
